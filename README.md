@@ -1,4 +1,5 @@
-# diCaptcha
+# diCaptcha - Diffusion based Captcha
+
 A repo for our team participating in AssemblyAI hackathon 2022
 
 # The diCaptcha
