@@ -1,5 +1,5 @@
 body {
-  background: #27272a;
+  background: #27272a !important;
   overflow-x: hidden;
   user-select: none;
   -webkit-user-select: none;

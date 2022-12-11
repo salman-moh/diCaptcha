@@ -4,6 +4,8 @@ import Head from 'next/head';
 import * as React from 'react';
 import createEmotionCache from 'src/config/createEmotionCache';
 import { MuiThemeProvider } from 'src/providers/mui-theme-provider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'src/styles/global.css';
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -30,6 +32,7 @@ export default function App(props: MyAppProps) {
 
       <MuiThemeProvider>
         <Component {...pageProps} />
+        <ToastContainer />
       </MuiThemeProvider>
     </CacheProvider>
   );

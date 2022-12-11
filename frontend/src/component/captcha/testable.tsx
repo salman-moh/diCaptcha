@@ -2,11 +2,12 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Captcha } from './captcha';
 import { Inline } from './inline';
+import { toast } from 'react-toastify';
 
 export function Testable() {
   const [loading, setLoading] = useState(false);
   const [tokenStatus, setTokenState] = useState<'error' | 'resolved' | null>(
-    'resolved',
+    null,
   );
   const [captchaData, setCaptchaData] = useState<{
     hash: string;
@@ -19,7 +20,6 @@ export function Testable() {
     setLoading(true);
     setCaptchaData(null);
     setTokenState(null);
-
     const res = await axios.get(`/api/get-captcha`);
     console.log(`data`, res.data);
     setCaptchaData(res.data);
@@ -40,8 +40,15 @@ export function Testable() {
         refresh={loadCaptcha}
         open={!!captchaData}
         handleChange={captchaToken => {
-          if (captchaToken === null) setTokenState('error');
-          else setTokenState('resolved');
+          if (captchaToken === null) {
+            setTokenState('error');
+            toast.error(
+              'Sorry please try again, and be more careful this time 🤖',
+            );
+          } else {
+            setTokenState('resolved');
+            toast.success('Conguradulation 🎉');
+          }
         }}
         quiz={{
           hash: captchaData?.hash || '',
