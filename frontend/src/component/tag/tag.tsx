@@ -1,17 +1,18 @@
-import { Chip, ListItem } from '@mui/material';
+import { Chip, ListItem, ListItemProps } from '@mui/material';
 
 interface TagProps {
   label: string;
   selected: boolean;
-  onSelect: () => void;
-  onDelete: () => void;
+  onSelect?: () => void;
+  onDelete?: () => void;
+  sx?: ListItemProps['sx'];
 }
 
-export function Tag({ label, selected, onSelect, onDelete }: TagProps) {
+export function Tag({ label, selected, onSelect, onDelete, sx }: TagProps) {
   return (
     <ListItem
       disablePadding
-      sx={{ display: 'inline-flex', width: 'fit-content', m: 0.5 }}
+      sx={{ display: 'inline-flex', width: 'fit-content', m: 0.5, ...sx }}
     >
       <Chip
         sx={{ borderRadius: 2 }}

@@ -64,7 +64,7 @@ export function Captcha({
     try {
       setLoading(true);
       const res = await axios.post<{ token: string }>('/api/validate', {
-        quiz.hash,
+        hash: quiz.hash,
         selecteds: selectedTags,
       });
       const { token } = res.data;

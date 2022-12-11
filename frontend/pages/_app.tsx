@@ -19,6 +19,13 @@ export default function App(props: MyAppProps) {
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel="preload" href="/static/images/cute.webp" as="image" />
+        <link rel="preload" href="/static/images/game.webp" as="image" />
+        <link rel="preload" href="/static/images/modern.png" as="image" />
+        <link rel="preload" href="/static/images/movies.webp" as="image" />
+        <link rel="preload" href="/static/images/traditional.webp" as="image" />
+        <link rel="preload" href="/static/images/window-1.webp" as="image" />
+        <link rel="preload" href="/static/images/window-2.webp" as="image" />
       </Head>
 
       <MuiThemeProvider>
