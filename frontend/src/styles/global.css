@@ -1,4 +1,6 @@
 body {
   background: #27272a;
   overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
 }

@@ -9,7 +9,7 @@ interface InlineProps {
   onClick?: () => void;
   loading?: boolean;
 }
-export function Inline({ onClick, loading = true }: InlineProps) {
+export function Inline({ onClick, loading = false }: InlineProps) {
   return (
     <Stack
       direction="row"
@@ -23,8 +23,6 @@ export function Inline({ onClick, loading = true }: InlineProps) {
         cursor: 'pointer',
         border: '1px solid #e0e0e0',
         backgroundColor: '#fafafa',
-        userSelect: 'none',
-        WebkitUserSelect: 'none',
       }}
     >
       <Stack justifyContent="center">
