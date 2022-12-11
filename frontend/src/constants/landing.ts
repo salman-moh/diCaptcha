@@ -48,7 +48,7 @@ export const LandingData: (Omit<CaptchaDemoProps, 'goNext'> & {
   },
 
   {
-    title: 'Gammers',
+    title: 'Gamers',
     color: '#d83bd2',
     quiz: {
       image: {
