@@ -16,6 +16,8 @@
     "@types/node": "18.11.13",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
+    "@upstash/redis": "^1.18.1",
+    "axios": "^1.2.1",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
     "nanoid": "^4.0.0",

@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { getImagePrompt, getTokenForPrompt } from 'src/utils/requests';
 import { nanoid } from 'nanoid';
 import { selectTags } from 'src/utils/algorithms';
+import { redis } from 'src/config/redis';
 
 interface ResponseData {}
 
@@ -14,6 +15,9 @@ export default async function handler(
   const hash = nanoid();
   const tags = await getTokenForPrompt(prompt);
   const selectedTags = selectTags(tags);
+
+  redis.set(hash, JSON.stringify(selectedTags));
+
   res.status(200).json({
     hash,
     tags: selectedTags.client,
