@@ -1,9 +1,8 @@
 import { Grid, Typography } from '@mui/material';
-import { Box, Stack } from '@mui/system';
-import { useEffect, useReducer } from 'react';
-import { Inline } from 'src/component/captcha';
-import { Captcha } from 'src/component/captcha/captcha';
+import { Stack } from '@mui/system';
+import { useReducer } from 'react';
 import { CaptchaDemo } from 'src/component/captcha/demo';
+import { Testable } from 'src/component/captcha/testable';
 import { LandingData } from 'src/constants/landing';
 
 export default function Home() {
@@ -66,7 +65,7 @@ export default function Home() {
             transitionDelay: '3000ms',
           }}
         >
-          <Inline />
+          <Testable />
         </Stack>
       </Grid>
       <Grid
@@ -76,7 +75,6 @@ export default function Home() {
         sx={{ display: 'flex', justifyContent: 'center' }}
       >
         <CaptchaDemo {...LandingData[index]} goNext={increment} key={index} />
-        {/* <Inline /> */}
       </Grid>
     </Grid>
   );

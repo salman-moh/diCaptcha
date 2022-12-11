@@ -1,9 +1,8 @@
 import { Box, BoxProps } from '@mui/material';
-import { useRef } from 'react';
+import { useId } from 'react';
 
 export function DiCaptchaLogo(props: BoxProps) {
-  const hash = useRef(Math.random());
-  const prefix = hash.current;
+  const prefix = useId();
   return (
     <Box
       component="svg"

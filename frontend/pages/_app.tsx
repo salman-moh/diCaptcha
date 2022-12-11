@@ -22,10 +22,10 @@ export default function App(props: MyAppProps) {
         <link rel="preload" href="/static/images/cute.webp" as="image" />
         <link rel="preload" href="/static/images/game.webp" as="image" />
         <link rel="preload" href="/static/images/modern.png" as="image" />
-        <link rel="preload" href="/static/images/movies.webp" as="image" />
         <link rel="preload" href="/static/images/traditional.webp" as="image" />
         <link rel="preload" href="/static/images/window-1.webp" as="image" />
         <link rel="preload" href="/static/images/window-2.webp" as="image" />
+        <link rel="preload" href="/static/images/future.webp" as="image" />
       </Head>
 
       <MuiThemeProvider>

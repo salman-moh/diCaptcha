@@ -8,8 +8,9 @@ const LOGO_SIZE = 25;
 interface InlineProps {
   onClick?: () => void;
   loading?: boolean;
+  tokenStatus?: 'error' | 'resolved' | null;
 }
-export function Inline({ onClick, loading = false }: InlineProps) {
+export function Inline({ onClick, loading = false, tokenStatus }: InlineProps) {
   return (
     <Stack
       direction="row"
@@ -30,6 +31,7 @@ export function Inline({ onClick, loading = false }: InlineProps) {
           <CircularProgress size={40} sx={{ p: 1 }} />
         ) : (
           <Checkbox
+            checked={tokenStatus == 'resolved'}
             inputProps={{ 'aria-label': 'Checkbox demo' }}
             sx={{ '& .MuiSvgIcon-root': { fontSize: '1.9rem' } }}
           />

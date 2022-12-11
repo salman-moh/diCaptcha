@@ -1,3 +1,4 @@
+import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 import {
   Button,
   Card,
@@ -6,19 +7,17 @@ import {
   Dialog,
   IconButton,
   List,
-  ListItem,
   Stack,
   Theme,
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
 import { Box } from '@mui/system';
+import axios from 'axios';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Tag } from '../tag/tag';
 import { DiCaptchaLogo } from '../logo/dicaptcha';
-import axios from 'axios';
+import { Tag } from '../tag/tag';
 
 export interface Captcha {
   image: { url: string; width: number; height: number };
@@ -28,8 +27,8 @@ export interface Captcha {
 
 interface CaptchaProps {
   open: boolean;
-  size: number;
   close: () => void;
+  handleChange: (value: string | null) => void;
   refresh: () => void;
   quiz: Captcha;
 }
@@ -39,16 +38,9 @@ export function Captcha({
   open = true,
   close,
   refresh,
-  quiz = {
-    hash: 'asklfhasklgh',
-    image: {
-      url: '/static/images/squirrel.webp',
-      width: 629,
-      height: 629,
-    },
-    tags: ['a', 'v', 'c'],
-  },
-}: Partial<CaptchaProps>) {
+  handleChange,
+  quiz,
+}: CaptchaProps) {
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm'),
   );
@@ -56,7 +48,6 @@ export function Captcha({
   // custom select tags
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [token, setToken] = useState<string>();
   const [error, setError] = useState<string | null>(null);
   const fallbackSize = isMobile ? BASE_SEZE_XS : BASE_SIZE_MD;
 
@@ -68,12 +59,15 @@ export function Captcha({
         selecteds: selectedTags,
       });
       const { token } = res.data;
-      setToken(token);
+      handleChange(token);
     } catch (error) {
+      console.log(`error`, error);
       // @ts-ignore
       setError(error.message);
+      handleChange(null);
     } finally {
       setLoading(false);
+      close();
     }
   };
 
