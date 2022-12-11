@@ -11,7 +11,7 @@ export function DiCaptchaLogo(props: BoxProps) {
       viewBox="0 0 287.77 317.89"
       {...props}
     >
-      <path fill="none" d="M0 0h287.77v317.9H0z" pointer-events="none" />
+      <path fill="none" d="M0 0h287.77v317.9H0z" pointerEvents="none" />
       <linearGradient
         id={`${prefix}-a`}
         x1="664.04"
@@ -20,8 +20,8 @@ export function DiCaptchaLogo(props: BoxProps) {
         y2="205.49"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#fff33b" />
-        <stop offset="1" stop-color="#e93e3a" />
+        <stop offset="0" stopColor="#fff33b" />
+        <stop offset="1" stopColor="#e93e3a" />
       </linearGradient>
       <linearGradient
         id={`${prefix}-b`}
@@ -31,8 +31,8 @@ export function DiCaptchaLogo(props: BoxProps) {
         y2="188.31"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#e93e3a" />
-        <stop offset="1" stop-color="#3a0adf" />
+        <stop offset="0" stopColor="#e93e3a" />
+        <stop offset="1" stopColor="#3a0adf" />
       </linearGradient>
       <linearGradient
         id={`${prefix}-c`}
@@ -42,8 +42,8 @@ export function DiCaptchaLogo(props: BoxProps) {
         y2="171.13"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#0ff" />
-        <stop offset="1" stop-color="#00f" />
+        <stop offset="0" stopColor="#0ff" />
+        <stop offset="1" stopColor="#00f" />
       </linearGradient>
       <linearGradient
         id={`${prefix}-d`}
@@ -53,8 +53,8 @@ export function DiCaptchaLogo(props: BoxProps) {
         y2="153.96"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0" stop-color="#fff33b" />
-        <stop offset="1" stop-color="#e93e3a" />
+        <stop offset="0" stopColor="#fff33b" />
+        <stop offset="1" stopColor="#e93e3a" />
       </linearGradient>
       <path
         fill="#FFF"
