@@ -18,9 +18,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Tag } from '../tag/tag';
 import { DiCaptchaLogo } from '../logo/dicaptcha';
+import axios from 'axios';
 
 export interface Captcha {
   image: { url: string; width: number; height: number };
+  hash: string;
+  tags: string[];
 }
 
 interface CaptchaProps {
@@ -30,18 +33,20 @@ interface CaptchaProps {
   refresh: () => void;
   quiz: Captcha;
 }
-const BASE_SEZE_XS = 350;
-const BASE_SIZE_MD = 450;
+const BASE_SEZE_XS = 360;
+const BASE_SIZE_MD = 400;
 export function Captcha({
   open = true,
   close,
   refresh,
   quiz = {
+    hash: 'asklfhasklgh',
     image: {
       url: '/static/images/squirrel.webp',
       width: 629,
       height: 629,
     },
+    tags: ['a', 'v', 'c'],
   },
 }: Partial<CaptchaProps>) {
   const isMobile = useMediaQuery((theme: Theme) =>
@@ -50,6 +55,27 @@ export function Captcha({
 
   // custom select tags
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [token, setToken] = useState<string>();
+  const [error, setError] = useState<string | null>(null);
+  const fallbackSize = isMobile ? BASE_SEZE_XS : BASE_SIZE_MD;
+
+  const submit = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.post<{ token: string }>('/api/validate', {
+        quiz.hash,
+        selecteds: selectedTags,
+      });
+      const { token } = res.data;
+      setToken(token);
+    } catch (error) {
+      // @ts-ignore
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Dialog onClose={close} open={open}>
@@ -84,14 +110,14 @@ export function Captcha({
           />
           <Image
             alt={'cptcha quiz image'}
-            width={quiz.image.width}
-            height={quiz.image.height}
+            width={quiz.image.width || fallbackSize}
+            height={quiz.image.height || fallbackSize}
             src={quiz.image.url}
             draggable={false}
             style={{
               objectFit: 'contain',
               maxWidth: '100%',
-              maxHeight: isMobile ? BASE_SEZE_XS : BASE_SIZE_MD,
+              maxHeight: fallbackSize,
               position: 'relative',
             }}
           />
@@ -108,7 +134,7 @@ export function Captcha({
           </Typography>
 
           <List sx={{ flexDirection: 'row', flexWrap: 'wrap' }} disablePadding>
-            {['cute', 'nice', 'addorable', 'javascript', 'rust'].map(tag => (
+            {quiz.tags.map(tag => (
               <Tag
                 key={tag}
                 label={tag}
@@ -120,14 +146,19 @@ export function Captcha({
               />
             ))}
           </List>
-          <Typography variant="body2" color="text.secondary"></Typography>
         </CardContent>
         <CardActions sx={{ justifyContent: 'space-between' }}>
           <IconButton size="small" onClick={refresh}>
             <RefreshRoundedIcon />
           </IconButton>
           <DiCaptchaLogo width={30} height={30} />
-          <Button size="small" variant="contained" sx={{ boxShadow: 'none' }}>
+          <Button
+            size="small"
+            variant="contained"
+            disabled={loading}
+            sx={{ boxShadow: 'none' }}
+            onClick={submit}
+          >
             Submit
           </Button>
         </CardActions>
