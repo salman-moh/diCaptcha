@@ -38,7 +38,7 @@ export function CaptchaDemo({ quiz, trues, goNext }: CaptchaDemoProps) {
       .map((tag, index) => {
         return setTimeout(() => {
           setSelectedTags(s => new Set(s.add(tag)));
-        }, Math.round((2 ^ index) * 600) + 1000);
+        }, Math.round((2 ^ index) * 600) + 5000);
       });
 
     return () => {
@@ -47,6 +47,7 @@ export function CaptchaDemo({ quiz, trues, goNext }: CaptchaDemoProps) {
   }, []);
 
   useEffect(() => {
+    console.log(`here`, loading);
     if (loading) return;
 
     if (selectedTags.size === trues.length) {

@@ -21,7 +21,6 @@ export function Testable() {
     setCaptchaData(null);
     setTokenState(null);
     const res = await axios.get(`/api/get-captcha`);
-    console.log(`data`, res.data);
     setCaptchaData(res.data);
     setLoading(false);
   };

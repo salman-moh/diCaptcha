@@ -20,20 +20,12 @@ export default async function handler(
 
   const posSet = new Set(retrievedCache.pos.map(pos => pos[0]));
   const negSet = new Set(retrievedCache.neg.map(neg => neg[0]));
-  const goldSet = new Set(
-    retrievedCache.pos.filter(pos => pos[1] == 1).map(pos => pos[0]),
-  );
 
   const score = selecteds.reduce((score, tag) => {
-    return (
-      score +
-      Number(posSet.has(tag)) +
-      Number(goldSet.has(tag)) -
-      Number(negSet.has(tag))
-    );
+    return score + Number(posSet.has(tag)) - Number(negSet.has(tag));
   }, 0);
 
-  const isHuman = score >= (retrievedCache.client.length === 10 ? 4 : 3);
+  const isHuman = score >= 2; // 3 correct 1 neg
 
   if (isHuman) {
     res.status(200).json({ token: nanoid().repeat(2) });

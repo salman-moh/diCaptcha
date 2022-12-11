@@ -37,7 +37,7 @@ export function Inline({ onClick, loading = false, tokenStatus }: InlineProps) {
           />
         )}
       </Stack>
-      <Stack justifyContent="center" flexGrow={1}>
+      <Stack justifyContent="center" flexGrow={2}>
         <Typography
           component="span"
           sx={{ color: '#555555', fontSize: '0.9rem' }}

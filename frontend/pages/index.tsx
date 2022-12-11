@@ -72,7 +72,11 @@ export default function Home() {
         item
         xs={12}
         md={6}
-        sx={{ display: 'flex', justifyContent: 'center' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          mt: { xs: index === LandingData.length - 1 ? 0 : -15, md: 'unset' },
+        }}
       >
         <CaptchaDemo {...LandingData[index]} goNext={increment} key={index} />
       </Grid>

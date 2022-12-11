@@ -61,7 +61,6 @@ export function Captcha({
       const { token } = res.data;
       handleChange(token);
     } catch (error) {
-      console.log(`error`, error);
       // @ts-ignore
       setError(error.message);
       handleChange(null);
