@@ -16,4 +16,5 @@ A repo for our team participating in AssemblyAI hackathon 2022
 ## High-level architecture
 
 [![architecture network][1]][1]
+
 [1]: https://i.stack.imgur.com/kfrl0.png
