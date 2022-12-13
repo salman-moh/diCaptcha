@@ -31,6 +31,6 @@ export const selectTags = (tags: ResonseTags) => {
   result.client = [
     ...result.pos.map(tag => tag[0]),
     ...result.neg.map(tag => tag[0]),
-  ];
+  ].sort(() => Math.random() - 0.5);
   return result;
 };

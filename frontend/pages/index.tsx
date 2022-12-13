@@ -54,15 +54,18 @@ export default function Home() {
 
         <Stack
           alignItems="center"
-          style={{ opacity: Number(index === LandingData.length - 1) }}
+          style={{ opacity: Number(index >= 1) }}
           sx={{
             opacity: 0,
-            display: index < LandingData.length - 2 ? 'none' : 'flex',
+            width: index >= 1 ? 'unset' : 0,
+            height: index >= 1 ? 'unset' : 0,
+            visibility: index >= 1 ? 'unset' : 'hidden',
+            display: 'flex',
             mt: 2,
             transition: 'opacity',
             animationTimingFunction: 'ease-in',
             transitionDuration: '1500ms',
-            transitionDelay: '3000ms',
+            transitionDelay: '500ms',
           }}
         >
           <Testable />
@@ -74,7 +77,12 @@ export default function Home() {
         md={6}
         sx={{ display: 'flex', justifyContent: 'center' }}
       >
-        <CaptchaDemo {...LandingData[index]} goNext={increment} key={index} />
+        <CaptchaDemo
+          {...LandingData[index]}
+          goNext={increment}
+          key={index}
+          index={index}
+        />
       </Grid>
     </Grid>
   );

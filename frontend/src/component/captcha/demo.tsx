@@ -18,11 +18,17 @@ export interface CaptchaDemoProps {
   quiz: Omit<Captcha, 'hash'>;
   trues: string[];
   goNext: () => void;
+  index: number;
 }
 // TODO: read from captcha
 const BASE_SEZE_XS = 360;
 const BASE_SIZE_MD = 400;
-export function CaptchaDemo({ quiz, trues, goNext }: CaptchaDemoProps) {
+export function CaptchaDemo({
+  quiz,
+  trues,
+  goNext,
+  index: indexProps,
+}: CaptchaDemoProps) {
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down('sm'),
   );
@@ -38,7 +44,7 @@ export function CaptchaDemo({ quiz, trues, goNext }: CaptchaDemoProps) {
       .map((tag, index) => {
         return setTimeout(() => {
           setSelectedTags(s => new Set(s.add(tag)));
-        }, Math.round((2 ^ index) * 600) + 5000);
+        }, Math.round((2 ^ index) * (indexProps == 0 ? 400 : 600)) + (indexProps === 0 ? 1700 : 5000));
       });
 
     return () => {
@@ -47,13 +53,11 @@ export function CaptchaDemo({ quiz, trues, goNext }: CaptchaDemoProps) {
   }, []);
 
   useEffect(() => {
-    console.log(`here`, loading);
     if (loading) return;
 
     if (selectedTags.size === trues.length) {
       setLoading(true);
       setTimeout(() => {
-        console.log(`next`);
         goNext();
         setLoading(false);
       }, 1500);

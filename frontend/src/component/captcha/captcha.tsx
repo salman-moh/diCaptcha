@@ -60,6 +60,7 @@ export function Captcha({
       });
       const { token } = res.data;
       handleChange(token);
+      setSelectedTags([]);
     } catch (error) {
       // @ts-ignore
       setError(error.message);

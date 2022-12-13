@@ -1,6 +1,6 @@
 import { CaptchaDemoProps } from 'src/component/captcha/demo';
 
-export const LandingData: (Omit<CaptchaDemoProps, 'goNext'> & {
+export const LandingData: (Omit<CaptchaDemoProps, 'goNext' | 'index'> & {
   title: string;
   color: string;
 })[] = [

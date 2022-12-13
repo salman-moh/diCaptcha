@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Captcha } from './captcha';
 import { Inline } from './inline';
 import { toast } from 'react-toastify';
+import { Box } from '@mui/material';
 
 export function Testable() {
   const [loading, setLoading] = useState(false);
@@ -27,11 +28,13 @@ export function Testable() {
 
   return (
     <>
-      <Inline
-        onClick={loadCaptcha}
-        loading={loading}
-        tokenStatus={tokenStatus}
-      />
+      <Box sx={{ mb: { xs: 1, md: null } }}>
+        <Inline
+          onClick={loadCaptcha}
+          loading={loading}
+          tokenStatus={tokenStatus}
+        />
+      </Box>
       <Captcha
         close={() => {
           setCaptchaData(null);
