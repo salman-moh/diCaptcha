@@ -1,6 +1,7 @@
 # diCaptcha - Diffusion based Captcha
 
 A repo for our team participating in AssemblyAI hackathon 2022
+Video that describes the demo: https://youtu.be/ENv-qlfjSe8
 
 # The diCaptcha
 
