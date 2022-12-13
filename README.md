@@ -11,7 +11,7 @@ Ever tried to select all boxes that have traffic lights showing up and confused 
 The inspiration comes from providing a better Captcha user experience while keeping security also in mind.
 
 ## What it does 🤖
-![alt text] (https://raw.githubusercontent.com/salman-moh/retail-super-market-sales/main/DEMO_clipdrop-enhance.png)
+![alt text](https://raw.githubusercontent.com/salman-moh/retail-super-market-sales/main/DEMO_clipdrop-enhance.png)
 It shows a user an AI generated image and ask to select keywords/tags that are associated with the image.
 Tags will have 3 correct tags/keywords (that are actually associated with the image and part of the prompt)
 Tags will also have 3 negative tags/keywords (that are randomly generated and have nothing to do with the image)
